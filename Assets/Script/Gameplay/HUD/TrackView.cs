@@ -23,6 +23,8 @@ namespace YARG.Gameplay.HUD
         [SerializeField]
         private SoloBox _soloBox;
         [SerializeField]
+        private JudgementText _judgementText;
+        [SerializeField]
         private TextNotifications _textNotifications;
         [SerializeField]
         private CountdownDisplay _countdownDisplay;
@@ -105,6 +107,11 @@ namespace YARG.Gameplay.HUD
         public void UpdateNoteStreak(int streak)
         {
             _textNotifications.UpdateNoteStreak(streak);
+        }
+
+        public void UpdateJudgementText(bool wasOverhit = false, float timingRatio = 0.0f)
+        {
+            _judgementText.Ping(wasOverhit, timingRatio);
         }
 
         public void ShowNewHighScore()

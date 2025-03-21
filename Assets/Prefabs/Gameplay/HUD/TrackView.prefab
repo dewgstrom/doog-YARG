@@ -54,6 +54,7 @@ MonoBehaviour:
   _aspectRatioFitter: {fileID: 4901975570370130400}
   _topElementContainer: {fileID: 2784863481168182611}
   _soloBox: {fileID: 2390146520270845346}
+  _judgementText: {fileID: 5711969314765575265}
   _textNotifications: {fileID: 4946571513074747625}
   _countdownDisplay: {fileID: 202077715988875599}
   _playerNameDisplay: {fileID: 8857866979392484843}
@@ -204,7 +205,7 @@ RectTransform:
   m_GameObject: {fileID: 881258039788376651}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1.012091, y: 1.012091, z: 1}
+  m_LocalScale: {x: 1.0289122, y: 1.0289122, z: 1}
   m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 2784863481168182611}
@@ -412,12 +413,12 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 7393107189288512560}
-  m_RootOrder: 1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0.15}
   m_AnchorMax: {x: 1, y: 0.4}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: -30, y: 0}
+  m_AnchoredPosition: {x: 0, y: -11.333}
+  m_SizeDelta: {x: -30, y: 4.5333}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &7790223488963225628
 CanvasRenderer:
@@ -476,10 +477,10 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 15.4
-  m_fontSizeBase: 15.4
+  m_fontSize: 20
+  m_fontSizeBase: 20
   m_fontWeight: 400
-  m_enableAutoSizing: 1
+  m_enableAutoSizing: 0
   m_fontSizeMin: 0
   m_fontSizeMax: 999
   m_fontStyle: 0
@@ -545,7 +546,8 @@ RectTransform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 7393107189288512560}
   m_Father: {fileID: 83804126774381919}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -585,16 +587,16 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 4358552335320554345}
   - {fileID: 9117982706832125450}
+  - {fileID: 4358552335320554345}
   - {fileID: 3332058479463923254}
-  m_Father: {fileID: 2784863481168182611}
-  m_RootOrder: 2
+  m_Father: {fileID: 8581451651307167740}
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: -339}
-  m_SizeDelta: {x: 202, y: 90.666664}
+  m_AnchoredPosition: {x: 0, y: 261}
+  m_SizeDelta: {x: 202, y: 90.66666}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &788727731480389845
 CanvasRenderer:
@@ -628,6 +630,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5a6dfd84ddb88491aaa6f47c3e0ededa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _judgementTopText: {fileID: 4872656959687761145}
+  _judgementBottomText: {fileID: 1626545344322291961}
+  _judgementMidText: {fileID: 1912898617551126913}
+  _judgementCanvasGroup: {fileID: 4999389893323692839}
+  displayTime: 0.5
+  fadeTime: 0.25
+  judgeLabels:
+  - <color=#FF00FF>COOL</color>
+  - <color=#FFFF00>GREAT</color>
+  - <color=#FF0000>GOOD</color>
+  overhitText: <color=blue>XBAD</color>
+  missText: <color=blue>BAD</color>
+  earlyText: <color=blue>EARLY</color>
+  lateText: <color=red>LATE</color>
+  truePerfectRatio: 0.33
+  hitWindowSize: 70
 --- !u!1 &3254852916951348614
 GameObject:
   m_ObjectHideFlags: 0
@@ -748,11 +766,11 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 7393107189288512560}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0.3}
   m_AnchorMax: {x: 1, y: 0.9}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0.000015258789}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &3211464557964321294
@@ -812,10 +830,10 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 28
-  m_fontSizeBase: 28
+  m_fontSize: 16
+  m_fontSizeBase: 16
   m_fontWeight: 400
-  m_enableAutoSizing: 1
+  m_enableAutoSizing: 0
   m_fontSizeMin: 0
   m_fontSizeMax: 999
   m_fontStyle: 0
@@ -1022,7 +1040,6 @@ RectTransform:
   m_Children:
   - {fileID: 7754222893441328411}
   - {fileID: 9014481999390702953}
-  - {fileID: 7393107189288512560}
   m_Father: {fileID: 83804126774381919}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1387,7 +1404,7 @@ GameObject:
   - component: {fileID: 462030092629608558}
   - component: {fileID: 1912898617551126913}
   m_Layer: 5
-  m_Name: Full Text
+  m_Name: Mid Text
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1411,7 +1428,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0.21}
   m_AnchorMax: {x: 1, y: 0.79}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: -30, y: 0}
+  m_SizeDelta: {x: 90.198, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &462030092629608558
 CanvasRenderer:
@@ -1441,7 +1458,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Perfect!
+  m_text: 
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: f941d094fa226f74e9866f5e556ce769, type: 2}
   m_sharedMaterial: {fileID: 3946058399964092608, guid: f941d094fa226f74e9866f5e556ce769,
@@ -1470,10 +1487,10 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 34.65
-  m_fontSizeBase: 20
+  m_fontSize: 42
+  m_fontSizeBase: 42
   m_fontWeight: 400
-  m_enableAutoSizing: 1
+  m_enableAutoSizing: 0
   m_fontSizeMin: 0
   m_fontSizeMax: 999
   m_fontStyle: 0
@@ -1523,6 +1540,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: PlayerNameDisplay
+      objectReference: {fileID: 0}
+    - target: {fileID: 6492948755221035132, guid: f1057b18ead5aa441b8d91b2c7d29efc,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8429420445829968483, guid: f1057b18ead5aa441b8d91b2c7d29efc,
         type: 3}

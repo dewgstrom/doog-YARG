@@ -68,8 +68,12 @@ namespace YARG.Gameplay.Player
         protected int BeatlineIndex;
 
         protected bool IsBass { get; private set; }
+        protected bool IsDrums { get; private set; }
+        protected bool IsVox { get; private set; }
 
         private float _spawnAheadDelay;
+
+        protected double _playerHitWindow { get; private set; }
 
         public virtual void Initialize(int index, YargPlayer player, SongChart chart, TrackView trackView,
             StemMixer mixer, int? lastHighScore)
@@ -110,6 +114,23 @@ namespace YARG.Gameplay.Player
                 or Instrument.ProBass_17Fret
                 or Instrument.ProBass_22Fret;
 
+            IsDrums = Player.Profile.CurrentInstrument
+                is Instrument.EliteDrums
+                or Instrument.FiveLaneDrums
+                or Instrument.FourLaneDrums
+                or Instrument.ProDrums;
+
+            IsVox = Player.Profile.CurrentInstrument
+                is Instrument.Harmony
+                or Instrument.Vocals;
+
+            if (IsDrums)
+            {
+                _playerHitWindow = player.EnginePreset.Drums.HitWindow.MaxWindow;
+            }   else if (!IsVox) {
+                _playerHitWindow = player.EnginePreset.FiveFretGuitar.HitWindow.MaxWindow;
+            }
+            
             TrackView.ShowPlayerName(player);
         }
 
@@ -455,8 +476,19 @@ namespace YARG.Gameplay.Player
                         TrackView.ShowStrongFinish();
                     }
                 }
+                
+                double nTime = note.Time;
+
+                double time = GameManager.AudioTime;
+
+                // player hit window is in ms and includes early and late
+                // so .05x is the right multiplier to use
+                float ratio = (float)((time - nTime) / (_playerHitWindow / 2));
+
+                TrackView.UpdateJudgementText(false,ratio);
             }
 
+            
             LastCombo = Combo;
         }
 
@@ -481,6 +513,8 @@ namespace YARG.Gameplay.Player
                 {
                     haptics.SetMultiplier(0);
                 }
+
+                TrackView.UpdateJudgementText(false,2.0f);
             }
 
             LastCombo = Combo;
@@ -493,6 +527,8 @@ namespace YARG.Gameplay.Player
                 ComboMeter.SetFullCombo(false);
                 IsFc = false;
             }
+
+            TrackView.UpdateJudgementText(true);
 
             LastCombo = Combo;
         }
