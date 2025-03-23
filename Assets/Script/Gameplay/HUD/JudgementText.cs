@@ -53,17 +53,23 @@ namespace YARG
         }
         void Update()
         {
+            
+            if (_displayTime < displayTime * 0.9)
+            {
+                _fadeTime = _displayTime / 3;
+                _judgementCanvasGroup.alpha = _fadeTime;
+                double scaleVal = math.max(_displayTime * 2,.8);
+                _judgementMidText.transform.localScale = Vector3.one * (float)scaleVal;
+            } else {
+                _judgementMidText.transform.localScale = Vector3.one;
+            }
             _displayTime -= 1 * Time.deltaTime;
             if ( _displayTime < 0 )
             {
                 _displayTime = 0;
                 this.gameObject.SetActive(false);
             }
-            if (_displayTime < fadeTime)
-            {
-                _fadeTime = _displayTime;
-                _judgementCanvasGroup.alpha = _fadeTime * 2;
-            } 
+            
      
         }
 
