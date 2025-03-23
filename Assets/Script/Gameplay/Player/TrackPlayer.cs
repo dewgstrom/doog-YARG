@@ -223,6 +223,15 @@ namespace YARG.Gameplay.Player
 
             TrackMaterial.Initialize(ZeroFadePosition, FadeSize, Player.HighwayPreset);
             CameraPositioner.Initialize(Player.CameraPreset);
+
+            if(Player.CameraPreset.Name.Contains("Dora"))
+            {
+                TrackCamera.orthographic = true;
+                
+                float sizeOffset = 2;
+                float sizeRatio = (Player.CameraPreset.FieldOfView - 40) / 110;
+                TrackCamera.orthographicSize = 2 + sizeOffset * sizeRatio;
+            }
         }
 
         protected void ResetNoteCounters()
