@@ -45,6 +45,20 @@ namespace YARG.Themes
                 },
                 PreferredColorProfile = ColorProfile.AprilFoolsDefault.Id,
                 PreferredCameraPreset = CameraPreset.CircularDefault.Id,
+            },
+            new ThemePreset("Dora Xplora", true)
+                {
+                AssetBundleThemePath = "Themes/Flat",
+                SupportedGameModes =
+                {
+                    GameMode.FiveFretGuitar,
+                    GameMode.SixFretGuitar,
+                    GameMode.FourLaneDrums,
+                    GameMode.FiveLaneDrums,
+                    GameMode.ProKeys
+                },
+                PreferredColorProfile = ColorProfile.Default.Id,
+                PreferredCameraPreset = CameraPreset.Default.Id
             }
         };
     }
