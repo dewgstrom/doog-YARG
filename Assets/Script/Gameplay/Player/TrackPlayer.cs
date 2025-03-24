@@ -231,6 +231,7 @@ namespace YARG.Gameplay.Player
                 float sizeOffset = 2;
                 float sizeRatio = (Player.CameraPreset.FieldOfView - 40) / 110;
                 TrackCamera.orthographicSize = 2 + sizeOffset * sizeRatio;
+                TrackCamera.transform.position.AddZ(-2);
             }
         }
 
